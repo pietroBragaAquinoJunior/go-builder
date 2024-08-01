@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"builder/computer"
+)
 
 func main() {
-	computerAppleBuilder := newComputerAppleBuilder()
-	computerLinuxBuilder := newComputerLinuxBuilder()
+	computerAppleBuilder := computer.NewComputerAppleBuilder()
+	computerLinuxBuilder := computer.NewComputerLinuxBuilder()
 
-	director := newDirector(computerAppleBuilder)
-	computer := director.createComputer()
+	director := computer.NewDirector(computerAppleBuilder)
+	computer := director.CreateComputer()
 
-	fmt.Printf("Informações do computador, memory: %s, cpu: %s, video: %s", computer.memory, computer.cpu, computer.memory)
+	fmt.Printf("Informações do computador, memory: %s, cpu: %s, video: %s", computer.Memory, computer.Cpu, computer.Video + "\n")
 
-	director.setBuilder(computerLinuxBuilder)
-	computer = director.createComputer()
-	fmt.Printf("Informações do computador, memory: %s, cpu: %s, video: %s", computer.memory, computer.cpu, computer.memory)
+	director.SetBuilder(computerLinuxBuilder)
+	computer = director.CreateComputer()
+	fmt.Printf("Informações do computador, memory: %s, cpu: %s, video: %s", computer.Memory, computer.Cpu, computer.Video + "\n")
 
 }
